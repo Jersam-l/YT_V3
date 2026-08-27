@@ -1,3 +1,5 @@
+#python -m pytest naca6/tests/test_meanline.py
+
 import numpy as np
 
 from ..equations.meanline import calculate_meanline
