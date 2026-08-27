@@ -5,23 +5,13 @@ def calculate_meanline(x_bar, a, cli):
     ym=np.zeros(len(x_bar))
     if not 0 < a <= 1:
         raise ValueError("The loading parameter 'a' must satisfy 0 < a <= 1.")
-    # if a==1.0:
-    #     for i, xi in enumerate(x_bar):
-    #         if xi==0:
-    #             term1=0.0
-    #             term2=0.0
-    #         elif xi== 1:
-    #             term1 = 0.5 * xi**2 * np.log(xi) if xi > 0 else 0.0
-    #             term2 = -0.5 * (1 - xi)**2 * np.log(1 - xi) if xi < 1 else 0.0
-    #         else:
-    #              term1 = 0.5 * xi**2 * np.log(xi)
-    #              term2 = -0.5 * (1 - xi)**2 * np.log(1 - xi)
-    #         term3 = 0.25 * (1 - xi)**2
-    #         term4 = -0.25 * xi**2
-    #         term5 = -0.75 * xi
-    #         term6 = 0.25
-    #         ym[i]=(cli/(2*np.pi)*(term1+term2+term3+term4+term5+term6))
-    #     return ym
+    if a==1.0:
+        for i, xi in enumerate(x_bar):
+            if xi==0: #use L'Hôpital's rule.
+                g_1=0
+                h_1=0
+                ''
+        return ym
             
     else:
         g=-((a**2*((1/2)*np.log(a)-(1/4))+(1/4))/(1-a))
