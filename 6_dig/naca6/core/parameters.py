@@ -1,15 +1,32 @@
 from dataclasses import dataclass
-from ..input.designation import NACA6Designation
+
+from .validation import validate_parameters
+
 
 @dataclass
 class NACA6Parameters:
-    designation: NACA6Designation
     chord: float
     number_of_points: int
+    designation: object
+    meanline_a: float
 
-def parse_parameters( text1:str, text2:str, designation: NACA6Designation) -> NACA6Parameters:
-    text1= text1.strip()
-    text2= text2.strip()
-    chord = float(text1)
-    number_of_points = int(text2)
-    return NACA6Parameters(designation=designation, chord=chord, number_of_points=number_of_points)
+
+def parse_parameters(
+    chord,
+    number_of_points,
+    designation,
+    meanline_a=None,
+):
+    if meanline_a is None:
+        meanline_a = designation.pressure_location
+
+    parameters = NACA6Parameters(
+        chord=float(chord),
+        number_of_points=int(number_of_points),
+        designation=designation,
+        meanline_a=float(meanline_a),
+    )
+
+    validate_parameters(parameters)
+
+    return parameters

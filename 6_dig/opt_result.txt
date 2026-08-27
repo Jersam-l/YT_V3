@@ -1,0 +1,6 @@
+Series: 66
+Pressure Location: 0.59073
+Design CL: 0.91811
+Thickness Ratio: 0.14870
+Meanline a: 0.19666
+RMSE: 0.24146
