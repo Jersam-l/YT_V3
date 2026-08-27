@@ -14,9 +14,9 @@ parameters.designation.design_lift_coefficient parameters.designation thickness_
             │
             └── number_of_points = 200```
           ↓
-3. core/validation.py++++++++
+3. core/validation.py+++------- api should be linked 
           ↓
-4. core/result.py
+4. core/result.py+++++++---
           ↓
 5. equations/meanline.py
           ↓
