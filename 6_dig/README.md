@@ -1,6 +1,18 @@
 1. input/designation.py ++++++++
           ↓
-2. core/parameters.py --------
+2. core/parameters.py ++++++++++(parameters.designation.series
+parameters.designation.design_lift_coefficient parameters.designation thickness_ratio parameters.chord parameters.number_of_points)
+```text
+            NACA6Parameters
+            │
+            ├── designation
+            │   ├── series = 66
+            │   ├── design_lift_coefficient = 0.2
+            │   └── thickness_ratio = 0.15
+            │
+            ├── chord = 1.0
+            │
+            └── number_of_points = 200```
           ↓
 3. core/validation.py
           ↓
