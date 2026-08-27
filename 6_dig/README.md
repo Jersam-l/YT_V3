@@ -18,7 +18,7 @@ parameters.designation.design_lift_coefficient parameters.designation thickness_
           ↓
 4. core/result.py+++++++---
           ↓
-5. equations/meanline.py
+5. equations/meanline.py-------------------[errors due to limitss]
           ↓
 6. equations/velocity_distribution.py
           ↓
