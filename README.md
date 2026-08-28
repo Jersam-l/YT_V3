@@ -130,7 +130,7 @@ The `a` value is an *independent modifier*. In standard NACA reports, if `a` is 
 
 # GPT
 mod
-``'text
+```text
 YT-ASSERTS/V3
 │   README.md
 │
