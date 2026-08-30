@@ -43,3 +43,8 @@ plt.grid(True, alpha=0.3)
 plt.legend()
 plt.tight_layout()
 plt.show()
+
+filename = f"NACA{input_1.series}({int(input_1.design_lift_coefficient * 10)})-{int(input_1.thickness_ratio * 100):03d}_a-{a_input or 'default'}.dat"
+with open(filename, "w") as file:
+    for x,y in zip(result.boundary_x, result.boundary_y):
+        file.write(f"{x:.8f}    {y:.8f}\n")
