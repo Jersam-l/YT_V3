@@ -42,14 +42,14 @@ def parse_designation(text: str) -> NACA6Designation:
 
         series                  = 63
         pressure_location       = 0.3
-        design_lift_coefficient = 0.8
+        design_lift_coefficient = 0.0
         thickness_ratio         = 0.15
 
     66(2)-015
 
         series                  = 66
         pressure_location       = 0.6
-        design_lift_coefficient = 0.2
+        design_lift_coefficient = 0.0
         thickness_ratio         = 0.15
     """
 
@@ -200,18 +200,21 @@ def parse_designation(text: str) -> NACA6Designation:
     # ---------------------------------------------------------
     # 10. Design lift coefficient
     #
-    # IMPORTANT:
+    # In standard NACA 6-series nomenclature, the design CL
+    # is the first digit (or digits) after the dash.
+    # The last two digits are always the thickness ratio.
     #
-    # In the current project/test convention, the digit
-    # inside the parentheses defines the design CL.
-    #
-    # 66(2)-015 -> CL = 0.2
-    # 63(8)-015 -> CL = 0.8
-    #
+    # 66(2)-015 -> CL = 0.0
+    # 63(2)-615 -> CL = 0.6
+    # 64(1)-212 -> CL = 0.2
     # ---------------------------------------------------------
 
+    cl_str = thickness_part[:-2]
+    if not cl_str:
+        cl_str = "0"
+
     design_lift_coefficient = (
-        int(cl_part)
+        int(cl_str)
         / 10.0
     )
 
@@ -228,10 +231,10 @@ def parse_designation(text: str) -> NACA6Designation:
     #
     # The suffix after the dash is interpreted as follows:
     #
-    #   015  ->  t/c = 15%   (leading zero)
-    #   215  ->  t/c = 15%   (first digit echoes CL)
-    #   012  ->  t/c = 12%
-    #   218  ->  t/c = 18%
+    #   015  ->  t/c = 15%   (CL = 0)
+    #   215  ->  t/c = 15%   (CL = 0.2)
+    #   012  ->  t/c = 12%   (CL = 0)
+    #   218  ->  t/c = 18%   (CL = 0.2)
     #
     # We always take the last two digits as the thickness
     # percentage.

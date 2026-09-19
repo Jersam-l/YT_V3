@@ -7,7 +7,7 @@ from naca6.input.designation import (
 def test_parse_standard_designation():
 
     result = parse_designation(
-        "66(2)-015"
+        "66(2)-215"
     )
 
     assert isinstance(
@@ -24,7 +24,7 @@ def test_parse_standard_designation():
 def test_parse_designation_with_spaces():
 
     result = parse_designation(
-        " 66(2)-015 "
+        " 66(2)-215 "
     )
 
     assert result.series == 66

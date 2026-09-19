@@ -1,5 +1,8 @@
+import numpy as np
+
 from naca6.input.designation import parse_designation
-input_1= parse_designation(input("Enter the NACA 6-series designation (e.g. 66(2)-015): "))
+designation_str = input("Enter the NACA 6-series designation (e.g. 66(2)-015): ").strip()
+input_1 = parse_designation(designation_str)
 #2
 
 from naca6.core.parameters import parse_parameters
@@ -32,7 +35,7 @@ plt.plot(result.upper_x, result.upper_y, 'b-', lw=1.5, label='Upper Surface')
 plt.plot(result.lower_x, result.lower_y, 'r-', lw=1.5, label='Lower Surface')
 plt.plot(result.mean_x, result.mean_y, 'g--', lw=1.0, label='Meanline')
 
-title_str = f"NACA {input_1.series}({int(input_1.design_lift_coefficient*10)})-{int(input_1.thickness_ratio*100):03d}"
+title_str = f"NACA {designation_str}"
 if a_val is not None:
     title_str += f" (a={a_val})"
 plt.title(title_str)
@@ -44,7 +47,9 @@ plt.legend()
 plt.tight_layout()
 plt.show()
 
-filename = f"NACA{input_1.series}({int(input_1.design_lift_coefficient * 10)})-{int(input_1.thickness_ratio * 100):03d}_a-{a_input or 'default'}.dat"
-with open(filename, "w") as file:
-    for x,y in zip(result.boundary_x, result.boundary_y):
-        file.write(f"{x:.8f}    {y:.8f}\n")
+
+# boundary_z=np.zeros(len(result.boundary_x))
+# filename = f"NACA_{designation_str}_a-{a_input or 'default'}.dat"
+# with open(filename, "w") as file:
+#     for x,y,z in zip(result.boundary_x, result.boundary_y, boundary_z):
+#         file.write(f"{x:.8f}\t{y:.8f}\t{z:.8f}\n")
