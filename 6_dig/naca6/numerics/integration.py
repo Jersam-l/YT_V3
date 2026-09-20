@@ -15,4 +15,4 @@ def integrate(x, y):
     if len(x) < 2:
         raise ValueError("At least two points are required.")
 
-    return np.trapezoid(y, x)
+    return np.trapz(y, x)

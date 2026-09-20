@@ -40,7 +40,7 @@ def fourier_sine_coefficients(phi, values, order):
 
         coefficients[n - 1] = (
             2.0 / np.pi
-            * np.trapezoid(
+            * np.trapz(
                 values * np.sin(n * phi),
                 phi,
             )
@@ -88,7 +88,7 @@ def fourier_cosine_coefficients(phi, values, order):
 
         coefficients[n - 1] = (
             2.0 / np.pi
-            * np.trapezoid(
+            * np.trapz(
                 values * np.cos(n * phi),
                 phi,
             )
